@@ -1,0 +1,264 @@
+% +-------------------------------------------------------------------------+
+% | LICENÇA                                                                 |
+% | abtex2-modelo-trabalho-academico.tex, v-1.9.2 laurocesar                |
+% | Copyright 2012-2014 by abnTeX2 group at http://abntex2.googlecode.com/  |
+% |                                                                         |
+% | This work may be distributed and/or modified under the conditions of    |
+% | the LaTeX Project Public License, either version 1.3 of this license or |
+% | (at your option) any later version. The latest version of this license  |
+% | is in http://www.latex-project.org/lppl.txt and version 1.3 or later    |
+% | is part of all distributions of LaTeX version 2005/12/01 or later.      |
+% |                                                                         |
+% | This work has the LPPL maintenance status `maintained'.                 |
+% |                                                                         |
+% | The Current Maintainer of this work is the abnTeX2 team, led by Lauro   |
+% | César Araujo. Further information are available on                      |
+% | http://abntex2.googlecode.com/                                          |
+% +-------------------------------------------------------------------------+
+%
+% +-------------------------------------------------------------------------+
+% | INFORMAÇÕES                                                             |
+% | Esse modelo de trabalho a acadêmico possui os seguintes arquivos:       |
+% | PRINCIPAL (Diretório)                                                   |
+% |    trabalho_academico.tex                                               |
+% | ELEMENTOS PRÉ-TEXTUAIS (diretório)                                      |
+% |    capa                        (obrigatório - via comando LaTeX)        |
+% |    folha de rosto              (obrigatório - via comando LaTeX)        |
+% |    ficha_catalografica.tex     (obrigatório - via biblioteca)           |
+% |    errata.tex                  (opcional)                               |
+% |    folha_de_aprovacao.tex      (obrigatório - documento externo)        |
+% |    dedicatoria.tex             (opcional)                               |
+% |    agradecimentos.tex          (opcional)                               |
+% |    epigrafe.tex                (opcional)                               |
+% |    resumo.tex                  (obrigatório)                            |
+% |    abstract.tex                (obrigatório)                            |
+% |    lista de figuras            (opcional - via comando LaTeX)           |
+% |    lista de tabelas            (opcional - via comando LaTeX)           |
+% |    abreviaturas.tex            (opcional)                               |
+% |    simbolos.tex                (opcional)                               |
+% |    sumário                     (obrigatório - via comando LaTeX)        |
+% | ELEMENTOS TEXTUAIS (diretório)                                          |
+% |    prefacio.tex                (opcional)                               |
+% |    introducao.tex              (obrigatório)                            |
+% |    desenvolvimento.tex         (obrigatório)                            |
+% |    conclusao.tex               (obrigatório)                            |
+% | ELEMENTOS PÓS-TEXTUAIS (diretório)                                      |
+% |    apendice_a.tex              (opcional)                               |
+% |    anexo_a.tex                 (opcional)                               |
+% |    referencias bibliográficas  (obrigatório - via comando LaTeX)        |
+% |    bibliografia.bib            (obrigatório)                            |
+% |    glossário                   (opcional - via comando LaTeX)           |
+% |    índice remissivo            (opcional - via comando LaTeX)           |
+% +-------------------------------------------------------------------------+
+
+\documentclass[%
+% --- OPÇÕES DA CLASSE MEMOIR ---
+12pt,      % tamanho da fonte
+openright, % Capítulos começam em pág ímpar (insere página em branco em caso de necessidade)
+oneside,	   % Impressão em verso e anverso [oneside]
+a4paper,   % Tamanho do papel
+% --- OPÇÕES DA CLASSE ABNTEX2 ---
+% chapter=TITLE,       % Títulos de capítulos convertidos em letras maiúsculas
+% section=TITLE,       % Títulos de seções convertidos em letras maiúsculas
+% subsection=TITLE,    % Títulos de subseções convertidos em letras maiúsculas
+% subsubsection=TITLE, % Títulos de subsubseções convertidos em letras maiúsculas
+% --- OPÇÕES DO PACOTE BABEL ---
+english,	 % Idioma adicional para hifenização
+spanish,	 % Idioma adicional para hifenização
+brazil	 % O último idioma é o principal do documento
+]{abntex2}
+%
+%
+%
+% +---------+
+% | Pacotes | 
+% +---------+
+% PACOTES BÁSICOS
+\usepackage{lmodern} % Usa a fonte Latin Modern			
+\usepackage[T1]{fontenc}	 % Selecao de codigos de fonte
+\usepackage[utf8]{inputenc} % Codificacao do documento (conversão automática dos acentos)
+\usepackage{lastpage} % Usado pela Ficha catalográfica
+\usepackage{indentfirst}	 % Indenta o primeiro parágrafo de cada seção
+\usepackage{color} % Controle das cores
+\usepackage{graphicx} % Inclusão de figuras
+\usepackage{microtype} % para melhorias de justificação
+% PACOTES ADICIONAIS 
+\usepackage{lipsum} % Para geração de dummy text
+% PACOTES DE CITAÇÕES
+\usepackage[brazilian,hyperpageref]{backref} % Páginas com as citações na bibl
+\usepackage[alf]{abntex2cite} % Citações padrão ABNT
+
+% +-------------------------------------+
+% | CONFIGURAÇÕES DE PACOTES E COMANDOS |
+% +-------------------------------------+
+% --- CONFIGURAÇÕES DO PACOTE BACKREF ---
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+
+% +--------------------------------------------------------------+
+% | INFORMAÇÕES GERAIS                                           |
+% | Informações e dados para composição da CAPA e FOLHA DE ROSTO |
+% +--------------------------------------------------------------+
+\titulo{Modelo de trabalho acadêmico nas normas da ABNT}
+\autor{Nome do(a) autor(a)}
+\local{Brasil - Paraná - Paranaguá}
+\data{31 de março de 2022, v-1.0}
+\orientador{Nome do orientador}
+\coorientador{Nome do coorientador}
+\instituicao{%
+  Instituto Federal do Paraná -- IFPR
+  \par
+  Curso de Licenciatura em Física}
+\tipotrabalho{Trabalho de Conclusão de Curso}
+\preambulo{ Trabalho de conclusão de curso apresentado ao Curso de Licenciatura em Física do Instituto Federal do Paraná/Paranaguá, como requisito parcial para a obtenção do grau de Licenciado(a) em Física.}
+
+% --- CONFIGURAÇÕES DE APARÊNCIA DO PDF FINAL ---
+% Alterando o aspecto da cor azul no PDF
+\definecolor{blue}{RGB}{41,5,195}
+%
+% Informações do PDF
+\makeatletter
+\hypersetup{
+%pagebackref=true,
+pdftitle={\@title}, 
+pdfauthor={\@author},
+pdfsubject={\imprimirpreambulo},
+pdfcreator={LaTeX with abnTeX2},
+pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+colorlinks=true, % false: boxed links; true: colored links
+linkcolor=blue, % Cor dos links internos
+citecolor=blue, % Cor dos links das referências bibiiográficas
+filecolor=blue, % Cor dos links para os arquivos
+urlcolor=blue, % Cor dos links para páginas web
+bookmarksdepth=4
+}
+\makeatother
+
+% +---------------------+
+% | FORMATAÇÃO DO TEXTO |
+% +---------------------+
+\setlength{\parindent}{1.3cm} % Tamanho do parágrafo
+\setlength{\parskip}{0.2cm} % Controle do espaçamento entre um parágrafo e outro. Tente também \onelineskip
+
+% +------------------+
+% | ÍNDICE REMISSIVO |
+% +------------------+
+%\makeindex
+
+% +---------------------+
+% | INÍCIO DO DOCUMENTO |
+% +---------------------+
+\begin{document}
+\frenchspacing % Controle do espaçamento entre um parágrafo e outro
+
+% +------------------------+
+% | ELEMENTOS PRÉ-TEXTUAIS |
+% +------------------------+
+\pretextual
+
+\imprimircapa % (obrigatório)
+
+\imprimirfolhaderosto* % (obrigatório) (o * indica que haverá a ficha bibliográfica)
+
+\input{pre_textuais/ficha_catalografica} % (obrigatório - via biblioteca)
+
+\input{pre_textuais/errata} % (opcional)
+
+\input{pre_textuais/folha_de_aprovacao} % (obrigatório - documento externo)
+
+\input{pre_textuais/dedicatoria} % (opcional)
+
+\input{pre_textuais/agradecimentos} % (opcional)
+
+\input{pre_textuais/epigrafe} % (opcional)
+
+\input{pre_textuais/resumo} % (obrigatório)
+
+\input{pre_textuais/abstract} % (obrigatório)
+
+% --- LISTA DE FIGURAS ---
+%\pdfbookmark[0]{\listfigurename}{lof}
+%\listoffigures* % (opcional)
+%\cleardoublepage
+
+% --- LISTA DE TABELAS ---
+%\pdfbookmark[0]{\listtablename}{lot}
+%\listoftables* % (opcional)
+%\cleardoublepage
+
+\input{pre_textuais/abreviaturas} % (opcional)
+
+\input{pre_textuais/simbolos} % (opcional)
+
+% --- SUMÁRIO ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents* % (obrigatório)
+\cleardoublepage
+
+% +--------------------+
+% | ELEMENTOS TEXTUAIS |
+% +--------------------+
+\textual
+\pagestyle{simple}
+\input{textuais/prefacio} % (opcional)
+
+\input{textuais/introducao} % (obrigatório)
+
+\input{textuais/desenvolvimento} % (obrigatório)
+
+\input{textuais/conclusao} % (obrigatório)
+
+% +------------------------+
+% | ELEMENTOS PÓS-TEXTUAIS |
+% +------------------------+
+\postextual
+
+% +-----------+
+% | APÊNDICES |
+% +-----------+
+\begin{apendicesenv}
+\partapendices % Imprime uma página indicando o início dos apêndices
+\include{pos_textuais/apendice_a}
+\end{apendicesenv}
+
+% +--------+
+% | ANEXOS |
+% +--------+
+\begin{anexosenv}
+\partanexos % Imprime uma página indicando o início dos anexos
+\include{pos_textuais/anexo_a}
+\end{anexosenv}
+
+% +----------------------------+
+% | REFERÊNCIAS BIBLIOGRÁFICAS |
+% +----------------------------+
+\bibliography{pos_textuais/bibliografia}
+
+% +-----------+
+% | GLOSSÁRIO |
+% +-----------+
+% Consulte o manual da classe abntex2 para orientações sobre o glossário.
+%\phantompart
+%\glossary % (opcional)
+
+% +------------------+
+% | ÍNDICE REMISSIVO |
+% +------------------+
+% Consulte o manual do LaTeX para orientações sobre elaboração do índice remissivo.
+%\phantompart
+%\printindex % (opcional)
+\end{document}
+%
+% EOF
+%
